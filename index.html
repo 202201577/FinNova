@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FinNova</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f7f7f7;
+  overflow-x:hidden;
+}
+
+/* MENU BUTTON */
+
+.menu-btn{
+  position:fixed;
+  top:25px;
+  right:25px;
+
+  width:60px;
+  height:60px;
+
+  background:#f0d08b;
+  color:#07140f;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:30px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  z-index:9999;
+}
+
+/* SIDE MENU */
+
+.side-menu{
+
+  position:fixed;
+
+  top:20px;
+  right:-320px;
+
+  width:280px;
+  height:96vh;
+  overflow-y:auto;
+  padding-bottom:40px;
+
+  background:linear-gradient(to bottom,#07140f,#0b241b);
+
+  border-radius:35px;
+
+  padding:35px 25px;
+
+  transition:0.4s ease;
+
+  z-index:99999;
+
+  box-shadow:-10px 0 30px rgba(0,0,0,0.35);
+}
+
+.close-btn{
+  color:white;
+  font-size:30px;
+  cursor:pointer;
+  margin-bottom:20px;
+}
+
+.side-logo{
+  font-size:38px;
+  font-weight:700;
+  color:#f0d08b;
+  margin-bottom:45px;
+}
+
+.menu-links{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.menu-links a{
+
+  text-decoration:none;
+  color:white;
+
+  font-size:20px;
+  font-weight:500;
+
+  padding:18px 20px;
+
+  border-radius:18px;
+
+  transition:0.3s;
+}
+
+.menu-links a:hover{
+  background:rgba(255,255,255,0.08);
+}
+
+.menu-links a:first-child{
+  background:linear-gradient(to right,#123d2d,#1f5a44);
+}
+
+/* NAVBAR */
+
+nav{
+  width:100%;
+  padding:35px 7%;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  position:absolute;
+  top:0;
+  left:0;
+
+  z-index:100;
+}
+
+.logo{
+  font-size:38px;
+  font-weight:700;
+  color:#f0d08b;
+}
+
+.nav-links{
+  display:flex;
+  gap:45px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:white;
+  font-size:17px;
+  font-weight:500;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.lang-btn{
+  background:transparent;
+  border:2px solid #f0d08b;
+  color:#f0d08b;
+
+  padding:12px 22px;
+
+  border-radius:14px;
+
+  font-size:15px;
+  font-weight:600;
+
+  cursor:pointer;
+}
+
+.nav-btn{
+  background:#f0d08b;
+  color:#07140f;
+  border:none;
+  padding:15px 35px;
+  border-radius:16px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+  width:95%;
+  margin:auto;
+  margin-top:20px;
+
+  min-height:95vh;
+
+  border-radius:35px;
+
+  background:
+  linear-gradient(to right, rgba(4,12,10,0.95), rgba(4,12,10,0.45)),
+  url('hero-bg.PNG');
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  padding:170px 6% 120px;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.hero-content{
+  width:55%;
+}
+
+.hero-content h1{
+  font-size:88px;
+  line-height:1.05;
+  color:white;
+  margin-bottom:25px;
+  font-weight:700;
+}
+
+.hero-content span{
+  color:#f0d08b;
+}
+
+.hero-content p{
+  color:#d8d8d8;
+  font-size:22px;
+  line-height:1.8;
+  width:90%;
+  margin-bottom:40px;
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+  display:flex;
+  gap:20px;
+}
+
+.btn-primary{
+  background:#f0d08b;
+  color:#07140f;
+  border:none;
+  padding:18px 40px;
+  border-radius:16px;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.btn-secondary{
+  background:transparent;
+  border:2px solid #f0d08b;
+  color:white;
+  padding:18px 40px;
+  border-radius:16px;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* STATS */
+
+.stats{
+  width:90%;
+  max-width:1100px;
+
+  background:#0d221b;
+
+  padding:32px 45px;
+
+  border-radius:30px;
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  gap:20px;
+
+  position:absolute;
+
+  left:50%;
+  transform:translateX(-50%);
+
+  bottom:-70px;
+
+  z-index:99;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.18);
+}
+
+.stat-box{
+  text-align:center;
+}
+
+.stat-box h2{
+  color:#f0d08b;
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.stat-box p{
+  color:#d8d8d8;
+  font-size:16px;
+}
+
+/* FEATURES */
+
+.features{
+  padding:170px 8% 100px;
+  color:#111;
+}
+
+.features-title{
+  text-align:center;
+  font-size:60px;
+  margin-bottom:70px;
+  color:#07140f;
+}
+
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.feature-card{
+  background:white;
+  border-radius:25px;
+  padding:40px 30px;
+  text-align:center;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.06);
+
+  transition:0.3s;
+}
+
+.feature-card:hover{
+  transform:translateY(-10px);
+}
+
+.feature-card img{
+  width:80px;
+  margin-bottom:20px;
+}
+
+.feature-card h3{
+  font-size:25px;
+  margin-bottom:15px;
+  color:#07140f;
+}
+
+.feature-card p{
+  color:#666;
+  line-height:1.8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+  .hero-content{
+    width:100%;
+  }
+
+  .hero-content h1{
+    font-size:60px;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:700px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-btn{
+    display:none;
+  }
+
+  .hero{
+    padding-top:150px;
+  }
+
+  .hero-content h1{
+    font-size:45px;
+  }
+
+  .hero-content p{
+    width:100%;
+    font-size:18px;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+    bottom:-120px;
+  }
+
+  .features{
+    padding-top:220px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU BUTTON -->
+
+<div class="menu-btn" onclick="openMenu()">
+☰
+</div>
+
+<!-- SIDE MENU -->
+
+<div class="side-menu" id="sideMenu">
+
+<div class="close-btn" onclick="closeMenu()">
+✕
+</div>
+
+<div class="side-logo">
+FinNova
+</div>
+
+<div class="menu-links">
+
+<a href="">🏠 Dashboard</a>
+<a href="">💳 Transactions</a>
+<a href="">💼 Budgets</a>
+<a href="">🎯 Goals</a>
+<a href="">📊 Analytics</a>
+<a href="">📄 Reports</a>
+<a href="">⚙️ Settings</a>
+<a href="login.html">🚪 Log Out</a>
+
+</div>
+
+</div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+FinNova
+</div>
+
+<div class="nav-links">
+<a href="">Home</a>
+<a href="">Features</a>
+<a href="">About</a>
+<a href="">Pricing</a>
+<a href="">Contact</a>
+</div>
+
+<div class="nav-right">
+
+<button class="lang-btn" onclick="toggleLanguage()">
+AR
+</button>
+
+<button class="nav-btn" id="start-btn">
+Get Started
+</button>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1 id="hero-title">
+Take control of <span>your money</span>
+</h1>
+
+<p id="hero-text">
+FinNova helps you manage your finances, save more, and achieve your goals with smart AI-powered insights.
+</p>
+
+<div class="hero-buttons">
+
+<button class="btn-primary" id="main-btn">
+Get Started
+</button>
+
+<button class="btn-secondary" id="demo-btn">
+Watch Demo
+</button>
+
+</div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat-box">
+<h2>10K+</h2>
+<p id="users-text">Active Users</p>
+</div>
+
+<div class="stat-box">
+<h2>98%</h2>
+<p id="satisfaction-text">Satisfaction</p>
+</div>
+
+<div class="stat-box">
+<h2>Secure</h2>
+<p id="security-text">Bank-level Security</p>
+</div>
+
+<div class="stat-box">
+<h2>24/7</h2>
+<p id="support-text">Support</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<h1 class="features-title" id="features-title">
+Why choose FinNova?
+</h1>
+
+<div class="features-grid">
+
+<div class="feature-card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+<h3 id="track-title">Smart Tracking</h3>
+
+<p id="track-text">
+Track income and expenses in real-time with advanced analytics.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/190/190411.png">
+
+<h3 id="goal-title">Set Goals</h3>
+
+<p id="goal-text">
+Create savings goals and stay motivated to achieve them faster.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
+
+<h3 id="ai-title">AI Insights</h3>
+
+<p id="ai-text">
+Receive smart recommendations based on your spending habits.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+
+<h3 id="secure-title">Secure & Private</h3>
+
+<p id="secure-text">
+Your data is protected with high-level encryption and security.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+function openMenu(){
+document.getElementById("sideMenu").style.right = "20px";
+}
+
+function closeMenu(){
+document.getElementById("sideMenu").style.right = "-320px";
+}
+
+/* LANGUAGE */
+
+let currentLanguage = localStorage.getItem("language") || "en";
+
+function applyLanguage(){
+
+if(currentLanguage === "ar"){
+
+document.documentElement.lang = "ar";
+document.body.style.direction = "rtl";
+
+document.getElementById("hero-title").innerHTML =
+'تحكم الكامل في <span>أموالك</span>';
+
+document.getElementById("hero-text").innerHTML =
+'فين نوفا يساعدك بإدارة أموالك وتحقيق أهدافك المالية بذكاء.';
+
+document.getElementById("main-btn").innerHTML = "ابدأ الآن";
+document.getElementById("demo-btn").innerHTML = "مشاهدة";
+
+document.getElementById("start-btn").innerHTML = "ابدأ";
+
+document.getElementById("features-title").innerHTML =
+"لماذا تختار FinNova؟";
+
+document.getElementById("users-text").innerHTML =
+"مستخدم نشط";
+
+document.getElementById("satisfaction-text").innerHTML =
+"رضا العملاء";
+
+document.getElementById("security-text").innerHTML =
+"حماية قوية";
+
+document.getElementById("support-text").innerHTML =
+"دعم فني";
+
+document.getElementById("track-title").innerHTML =
+"تتبع ذكي";
+
+document.getElementById("track-text").innerHTML =
+"تابع مصروفاتك ودخلك بسهولة.";
+
+document.getElementById("goal-title").innerHTML =
+"حدد أهدافك";
+
+document.getElementById("goal-text").innerHTML =
+"أنشئ أهداف مالية وحققها.";
+
+document.getElementById("ai-title").innerHTML =
+"ذكاء اصطناعي";
+
+document.getElementById("ai-text").innerHTML =
+"تحليلات ذكية حسب استخدامك.";
+
+document.getElementById("secure-title").innerHTML =
+"آمن وخاص";
+
+document.getElementById("secure-text").innerHTML =
+"بياناتك محمية بالكامل.";
+
+document.querySelector(".lang-btn").innerHTML = "EN";
+
+}
+
+else{
+
+document.documentElement.lang = "en";
+document.body.style.direction = "ltr";
+
+document.getElementById("hero-title").innerHTML =
+'Take control of <span>your money</span>';
+
+document.getElementById("hero-text").innerHTML =
+'FinNova helps you manage your finances, save more, and achieve your goals with smart AI-powered insights.';
+
+document.getElementById("main-btn").innerHTML = "Get Started";
+document.getElementById("demo-btn").innerHTML = "Watch Demo";
+
+document.getElementById("start-btn").innerHTML = "Get Started";
+
+document.getElementById("features-title").innerHTML =
+"Why choose FinNova?";
+
+document.getElementById("users-text").innerHTML =
+"Active Users";
+
+document.getElementById("satisfaction-text").innerHTML =
+"Satisfaction";
+
+document.getElementById("security-text").innerHTML =
+"Bank-level Security";
+
+document.getElementById("support-text").innerHTML =
+"Support";
+
+document.getElementById("track-title").innerHTML =
+"Smart Tracking";
+
+document.getElementById("track-text").innerHTML =
+"Track income and expenses in real-time with advanced analytics.";
+
+document.getElementById("goal-title").innerHTML =
+"Set Goals";
+
+document.getElementById("goal-text").innerHTML =
+"Create savings goals and stay motivated to achieve them faster.";
+
+document.getElementById("ai-title").innerHTML =
+"AI Insights";
+
+document.getElementById("ai-text").innerHTML =
+"Receive smart recommendations based on your spending habits.";
+
+document.getElementById("secure-title").innerHTML =
+"Secure & Private";
+
+document.getElementById("secure-text").innerHTML =
+"Your data is protected with high-level encryption and security.";
+
+document.querySelector(".lang-btn").innerHTML = "AR";
+
+}
+
+}
+
+function toggleLanguage(){
+
+if(currentLanguage === "en"){
+currentLanguage = "ar";
+}
+
+else{
+currentLanguage = "en";
+}
+
+localStorage.setItem("language", currentLanguage);
+
+applyLanguage();
+
+}
+
+applyLanguage();
+
+</script>
+
+</body>
+</html>
+
+ماشتغلللللللللللل ليش 😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
