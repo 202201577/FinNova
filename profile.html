@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FinNova Profile</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f5f5;
+display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:270px;
+height:95vh;
+
+background:linear-gradient(to bottom,#031c16,#063328);
+
+margin:20px;
+
+border-radius:35px;
+
+padding:30px 20px;
+
+position:fixed;
+
+overflow:hidden;
+
+color:white;
+}
+
+.logo{
+font-size:40px;
+font-weight:700;
+color:#f0d08b;
+margin-bottom:50px;
+}
+
+.menu{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.menu a{
+text-decoration:none;
+color:white;
+padding:18px 20px;
+border-radius:18px;
+font-size:18px;
+font-weight:500;
+transition:0.3s;
+}
+
+.menu a:hover{
+background:rgba(255,255,255,0.08);
+}
+
+.active{
+background:linear-gradient(to right,#0d8b63,#16b67f);
+}
+
+/* MAIN */
+
+.main{
+margin-left:330px;
+padding:40px;
+width:100%;
+}
+
+/* TOP */
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.title h1{
+font-size:45px;
+margin-bottom:10px;
+}
+
+.title p{
+font-size:18px;
+color:#666;
+}
+
+/* PROFILE CARD */
+
+.profile-card{
+background:white;
+border-radius:35px;
+padding:40px;
+display:flex;
+align-items:center;
+gap:30px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+margin-bottom:30px;
+}
+
+.profile-img{
+width:140px;
+height:140px;
+border-radius:50%;
+background:url('images/login.png');
+background-size:cover;
+background-position:center;
+}
+
+.profile-info h2{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.profile-info p{
+font-size:18px;
+color:#666;
+margin-bottom:15px;
+}
+
+.edit-btn{
+background:#16b67f;
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:14px;
+font-size:16px;
+cursor:pointer;
+}
+
+/* STATS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.card h2{
+font-size:40px;
+margin-bottom:10px;
+color:#063328;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.sidebar{
+display:none;
+}
+
+.main{
+margin-left:0;
+}
+
+.profile-card{
+flex-direction:column;
+text-align:center;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+FinNova
+</div>
+
+<div class="menu">
+
+<a href="index.html" id="menu-home">🏠 Dashboard</a>
+
+<a href="#" id="menu-spending">💸 Spending</a>
+
+<a href="saving-goals.html" id="menu-saving">🎯 Saving Goals</a>
+
+<a href="smart-jameya.html" id="menu-jameya">🤝 Smart Jameya</a>
+
+<a href="#" id="menu-ai">🧠 AI Insights</a>
+
+<a href="#" id="menu-support">⚡ Financial Support</a>
+
+<a href="profile.html" class="active" id="menu-profile">
+👤 Profile
+</a>
+
+<a href="login.html" id="menu-logout">
+🚪 Log Out
+</a>
+
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="top">
+
+<div class="title">
+
+<h1 id="title">
+My Profile 👤
+</h1>
+
+<p id="subtitle">
+Manage your account information
+</p>
+
+</div>
+
+</div>
+
+<!-- PROFILE CARD -->
+
+<div class="profile-card">
+
+<div class="profile-img"></div>
+
+<div class="profile-info">
+
+<h2 id="name">
+Ahmed Ali
+</h2>
+
+<p id="email">
+ahmed@gmail.com
+</p>
+
+<p id="bio">
+Saving smarter every day with FinNova.
+</p>
+
+<button class="edit-btn" id="edit-btn">
+Edit Profile
+</button>
+
+</div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="cards">
+
+<div class="card">
+<h2>12</h2>
+<p id="card1">
+Active Goals
+</p>
+</div>
+
+<div class="card">
+<h2 id="money">
+3,750 BHD
+</h2>
+<p id="card2">
+Total Savings
+</p>
+</div>
+
+<div class="card">
+<h2>92%</h2>
+<p id="card3">
+Financial Progress
+</p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let currentLanguage =
+localStorage.getItem("language") || "en";
+
+function applyLanguage(){
+
+if(currentLanguage === "ar"){
+
+document.documentElement.lang = "ar";
+document.body.style.direction = "rtl";
+
+/* MENU */
+
+document.getElementById("menu-home").innerHTML =
+"🏠 الرئيسية";
+
+document.getElementById("menu-spending").innerHTML =
+"💸 المصروفات";
+
+document.getElementById("menu-saving").innerHTML =
+"🎯 أهداف الادخار";
+
+document.getElementById("menu-jameya").innerHTML =
+"🤝 الجمعية الذكية";
+
+document.getElementById("menu-ai").innerHTML =
+"🧠 الذكاء الاصطناعي";
+
+document.getElementById("menu-support").innerHTML =
+"⚡ الدعم المالي";
+
+document.getElementById("menu-profile").innerHTML =
+"👤 الملف الشخصي";
+
+document.getElementById("menu-logout").innerHTML =
+"🚪 تسجيل خروج";
+
+/* PAGE */
+
+document.getElementById("title").innerHTML =
+"ملفي الشخصي 👤";
+
+document.getElementById("subtitle").innerHTML =
+"إدارة معلومات حسابك";
+
+document.getElementById("name").innerHTML =
+"أحمد علي";
+
+document.getElementById("bio").innerHTML =
+"أدخر بذكاء كل يوم مع FinNova.";
+
+document.getElementById("edit-btn").innerHTML =
+"تعديل الحساب";
+
+document.getElementById("card1").innerHTML =
+"أهداف نشطة";
+
+document.getElementById("card2").innerHTML =
+"إجمالي الادخار";
+
+document.getElementById("card3").innerHTML =
+"التقدم المالي";
+
+document.getElementById("money").innerHTML =
+"3,750 د.ب";
+
+}
+
+else{
+
+document.documentElement.lang = "en";
+document.body.style.direction = "ltr";
+
+}
+
+}
+
+applyLanguage();
+
+</script>
+
+</body>
+</html>
