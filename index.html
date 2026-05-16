@@ -168,17 +168,37 @@ nav{
   width:95%;
   margin:auto;
   margin-top:20px;
+
   min-height:95vh;
+
   border-radius:35px;
-  background:
+
+  background-image:
   linear-gradient(to right, rgba(4,12,10,0.95), rgba(4,12,10,0.45)),
   url('images/hero-bg.png');
+
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
+
   padding:170px 6% 120px;
+
   position:relative;
   overflow:hidden;
+
+  transition:0.4s;
+}
+
+/* ENGLISH */
+
+html[lang="en"] .hero{
+  background-position:right center;
+}
+
+/* ARABIC */
+
+html[lang="ar"] .hero{
+  background-position:left center;
 }
 
 .hero-content{
